@@ -1,0 +1,22 @@
+language: python
+cache: pip
+sudo: required
+services:
+- docker
+
+before_script:
+- docker build -t builder .
+
+script:
+- docker run --rm -v $PWD/dist:/dist builder
+
+# Travis encryption: https://gist.github.com/kzap/5819745
+deploy:
+  provider: releases
+  api_key:
+    secure: "h1CBz2BYYglFbtgGCdks9JBjtM07PZKBx7aSt7viatNTRSLkIA2E2OTYBFtmAs6MAoLnkGBWeNOGL/VvW2sQm+VMpmzUaXPyijrrFhPtwYZVIK0crKdXXC7ySflCFAVOLfb3GEZKXIltc0ARquSsgiI2uIh7PyMTQHb+BnGLP9GWjGdYpVDnnnx78pFE+3WynCZhIDK9DspuRkh+WGPmNb22UxUnLW5mPDgpO7uy5ct3ApDPdiczFJaTpUs3h3T3LtBxF13bZ5/f+uTK9DBeP0D1gDnGTdmb2ytxjBrEQubbtBf/SGKofuqzKovUO4Nnj2RFgFTYN6p0Vnw8hOxLnb7I8XUEjfa2G/jy8tlYYo5p/802RfTZfH+78luPuHBI5h6vZlQ9If1vflv6L04IQIPn0fGR4WQdkkMwIfuQGiTJAOuVpXJwCGTloq3zqgaW+vcwEYYDAMr2hlPcSly3WVHS7fQXeGcjyjd0wxbgKNRu+i7PMAQ8xeTtSZD+sMHg4K/iBG0O6EU1kyGqvgfiuORDvnJWVHv8oWTTU9KsjtQ4/Cd1S3B3MuH764Y9BayxJNl6pB8tyb2Ilg6I8dmMCLRs2dBXTjOegifXYaoLUInxSdGvLzF6SAAVZlwWBKRO5ybcsNi3iANlcWWHaXzPJcwV5ANqAFex2jUEqYuu+Pg="
+  file_glob: true
+  file: dist/zeroc-ice-*
+  skip_cleanup: true
+  on:
+    tags: true
