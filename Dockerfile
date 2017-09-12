@@ -1,8 +1,8 @@
 FROM centos:7
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
-RUN curl -sL https://zeroc.com/download/rpm/el7/zeroc-ice-el7.repo > \
-    /etc/yum.repos.d/zeroc-ice-el7.repo
+RUN curl -sL https://zeroc.com/download/Ice/3.6/el7/zeroc-ice3.6.repo > \
+    /etc/yum.repos.d/zeroc-ice3.6.repo
 RUN yum install -y -q epel-release && \
     yum install -y -q \
         ice-all-runtime \
