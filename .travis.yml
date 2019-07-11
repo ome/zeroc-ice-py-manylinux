@@ -17,11 +17,11 @@ script:
 # --------------------------------------
 # docker run -it --rm ruby bash
 # gem install travis
-# travis encrypt -r openmicroscopy/zeroc-ice-py-centos7 $GITHUB_KEY
+# travis encrypt -r ome/zeroc-ice-py-manylinux $GITHUB_KEY
 deploy:
   provider: releases
   api_key:
-    secure: "MRAr8jfDQl5Bo4aZkp8lAq7g4XRZstKdVSqc5IACjj5WUrttenitd+qFSAGTlySLxItFQqa8KnzamULt/ImK0MAeV5RyhJc1qGusnToVFxyqvsDrG/p0Jn8A9a480F/KJLitM1J6uH0oKLTHqHnJewwgK+q1SK0V13jB5TaI/ZfscXWL+g7Zbir9Vo8pMOD1uEJAwGywEV1eOM5wItpsj6BmmZapvUCBArx+Gre3i4n5SIkA2BmOf9g0BCVBk8brL7gTN0orgol+DxFuNUJu8KzQEyRXhRpU9GlPi80E7OcO27SubrG7LdyfTnwWCxY8nn1zFk058641o2auzZKSZymZ3HPoDX38GwRloXTTBEHWUds/2ykQAHAJ9VmFbabE/BZq6xNUoM0mOxNhICe5aNNoJGKBgdS4Kgsar8xiZOfAKCUIzmiOjnw05c0xVoZmJtsibImsU0JWe7G9PxiPQh6DyLmHNT85yYp+RfTzoFNRUjzsPbGpDZGXWH/8On57f4l4YwcTowKnHwg6mqj5WA+EN4XO4DG7nHECUPVscMoj3oHwlvtVJ5hWcR3Yq/hVH0hNTKDeiNnWWx9xqhKrEhvOJHfx0JPfMsj+uNey3XiEGuhFOVaMy14pEcTOCPmzI7yq5NRszgFy8lu/eqN1lGgTItfJHO5v5BFScZ7zyc8="
+    secure: TODO
   file_glob: true
   file: dist/zeroc*
   skip_cleanup: true
