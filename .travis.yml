@@ -9,6 +9,8 @@ before_script:
 
 script:
 - docker run --rm -v $PWD/dist:/dist builder cp27-cp27mu 3.6.4
+- cp dist/*.whl test/
+- for OS in centos7 ubuntu1804; do echo $OS; docker build -f test/Dockerfile.$OS test; done
 
 # Travis encryption where GITHUB_KEY is
 # a GitHub token with public_repo access

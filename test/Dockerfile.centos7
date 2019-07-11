@@ -1,0 +1,11 @@
+FROM centos:7
+
+RUN yum install -y -q epel-release && \
+    yum install -y -q python-virtualenv && \
+    virtualenv venv
+
+# Default pip is too old for manylinux wheels
+RUN venv/bin/pip install -U pip
+
+ADD test.sh zeroc_ice-3.6.4-cp27-cp27mu-manylinux2010_x86_64.whl /
+RUN /test.sh
