@@ -9,6 +9,7 @@ before_script:
 
 script:
 - docker run --rm -v $PWD/dist:/dist builder cp27-cp27mu 3.6.5
+- docker run --rm -v $PWD/dist:/dist builder cp36-cp36m 3.6.5
 - cp dist/*.whl test/
 - for OS in test/Dockerfile*; do echo $OS; docker build -f $OS test; done
 
