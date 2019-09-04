@@ -1,10 +1,10 @@
 #!/bin/sh
 # Get openssl build scripts from
-# https://github.com/pypa/manylinux/tree/e798fbb417c0f8e776fa9de7f8b9a3424f44eaf9
+# https://github.com/pypa/manylinux/tree/$MANYLINUX_COMMIT
 
 set -eux
 
-MANYLINUX_COMMIT=e798fbb417c0f8e776fa9de7f8b9a3424f44eaf9
+MANYLINUX_COMMIT=4e4be4dd8f670be1c463a764b93fd84e8648c2f6
 
 curl -sfLO https://raw.githubusercontent.com/pypa/manylinux/$MANYLINUX_COMMIT/docker/build_scripts/build_env.sh
 curl -sfLO https://raw.githubusercontent.com/pypa/manylinux/$MANYLINUX_COMMIT/docker/build_scripts/build_utils.sh
