@@ -4,7 +4,7 @@
 
 set -eux
 
-MANYLINUX_COMMIT=4e4be4dd8f670be1c463a764b93fd84e8648c2f6
+MANYLINUX_COMMIT=a3fe4ea166275c7321d2ad9516c2a7a62d59b402
 
 curl -sfLO https://raw.githubusercontent.com/pypa/manylinux/$MANYLINUX_COMMIT/docker/build_scripts/build_env.sh
 curl -sfLO https://raw.githubusercontent.com/pypa/manylinux/$MANYLINUX_COMMIT/docker/build_scripts/build_utils.sh
