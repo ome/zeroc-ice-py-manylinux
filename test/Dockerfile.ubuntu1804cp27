@@ -1,8 +1,0 @@
-FROM ubuntu:18.04
-
-RUN apt-get update && \
-    apt-get install -y -q python-virtualenv && \
-    virtualenv venv
-
-ADD test.sh zeroc_ice-3.6.5-cp27-cp27mu-manylinux2014_x86_64.whl /
-RUN /test.sh
