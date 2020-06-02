@@ -7,5 +7,5 @@ RUN apt-get update && \
 # Default pip is too old for manylinux wheels (it's older than the Ubuntu Python 2.7 pip!)
 RUN venv/bin/pip install -U pip
 
-ADD test.sh zeroc_ice-3.6.5-cp36-cp36m-manylinux2010_x86_64.whl /
+ADD test.sh zeroc_ice-3.6.5-cp36-cp36m-manylinux2014_x86_64.whl /
 RUN /test.sh
