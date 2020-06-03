@@ -2,5 +2,5 @@ FROM python:3.7-slim
 
 RUN python3.7 -m venv venv
 
-ADD test.sh zeroc_ice-3.6.5-cp37-cp37m-manylinux2010_x86_64.whl /
+ADD test.sh zeroc_ice-3.6.5-cp37-cp37m-manylinux2014_x86_64.whl /
 RUN /test.sh

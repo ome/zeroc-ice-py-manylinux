@@ -18,5 +18,5 @@ BUILD_FLAGS="--global-option=build_ext --global-option=-L/usr/local/ssl/lib/ --g
 $PIP download "zeroc-ice==$ICE_VERSION"
 tar -zxf "zeroc-ice-$ICE_VERSION.tar.gz"
 $PIP wheel ./zeroc-ice-$ICE_VERSION -w output $BUILD_FLAGS
-auditwheel repair --plat manylinux2010_x86_64 output/zeroc_ice-* -w output/
+auditwheel repair --plat manylinux2014_x86_64 output/zeroc_ice-* -w output/
 cp output/zeroc_ice*manylinux*whl /dist/

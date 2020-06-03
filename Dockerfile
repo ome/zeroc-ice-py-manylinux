@@ -1,10 +1,10 @@
-FROM quay.io/pypa/manylinux2010_x86_64
-# https://quay.io/repository/pypa/manylinux2010_x86_64/manifest/sha256:e1fd5ccf6fc799e7f07a7fc85dd17fdd7613b892c5af2cccdefcad4704051f59
+FROM quay.io/pypa/manylinux2014_x86_64:2020-05-30-73c9395
+# https://quay.io/repository/pypa/manylinux2014_x86_64?tag=latest&tab=tags
 
 LABEL maintainer="ome-devel@lists.openmicroscopy.org.uk"
-LABEL org.opencontainers.image.source="https://github.com/ome/zeroc-ice-py-centos7"
+LABEL org.opencontainers.image.source="https://github.com/ome/zeroc-ice-py-manylinux"
 
-RUN curl -sfL https://zeroc.com/download/Ice/3.6/el6/zeroc-ice3.6.repo > \
+RUN curl -sfL https://zeroc.com/download/Ice/3.6/el7/zeroc-ice3.6.repo > \
         /etc/yum.repos.d/zeroc-ice3.6.repo && \
     yum install -y -q \
         ice-all-runtime \
