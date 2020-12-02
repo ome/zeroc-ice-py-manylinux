@@ -1,0 +1,45 @@
+---
+name: Build
+
+on: 
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: [cp36-cp36m, cp37-cp37m, cp37-cp37m]
+    runs-on: ubuntu-latest
+    env:
+      artifact_file: dist/zeroc*
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Build
+        run: |
+          docker build -t builder .
+      - name: Run
+        run: |
+          docker run --rm -v $PWD/dist:/dist builder ${{ matrix.version }} 3.6.5
+      - name: Test
+        run: |
+          cp dist/*.whl test/
+          ref="$(cut -d'-' -f1 <<<${{ matrix.version }})"
+          for OS in test/Dockerfile*; 
+            do echo $OS;
+            if [[ $OS == *$ref* ]]; then
+              docker build -f $OS test
+            fi
+           done
+        shell: bash
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.artifact_file }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
