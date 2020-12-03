@@ -13,8 +13,6 @@ jobs:
       matrix:
         version: [cp36-cp36m, cp37-cp37m, cp38-cp38, cp39-cp39]
     runs-on: ubuntu-latest
-    env:
-      artifact_file: dist/zeroc*
     steps:
       - uses: actions/checkout@v2
       - name: Build
@@ -34,11 +32,26 @@ jobs:
             fi
            done
         shell: bash
-      - name: Upload binaries to release
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: dist/zeroc_ice-3.6.5-${{ matrix.version }}-manylinux2014_x86_64.whl
+          if-no-files-found: error
+  release:
+    if: startsWith(github.ref, 'refs/tags')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts from build
+        uses: actions/download-artifact@v2
+      - name: List artifacts
+        run: ls -R
+      - name:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.artifact_file }}
+          file: artifacts/*
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
