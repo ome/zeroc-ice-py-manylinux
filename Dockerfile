@@ -1,4 +1,4 @@
-FROM quay.io/pypa/manylinux2014_x86_64
+FROM quay.io/pypa/manylinux2014_x86_64:2020-11-11-bc8ce45
 # https://quay.io/repository/pypa/manylinux2014_x86_64?tag=latest&tab=tags
 
 LABEL maintainer="ome-devel@lists.openmicroscopy.org.uk"
