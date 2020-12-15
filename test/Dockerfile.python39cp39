@@ -1,0 +1,9 @@
+FROM python:3.9-slim
+
+RUN python3.9 -m venv venv
+
+# pip 19.2.3 is too old for manylinux2014 wheels
+RUN venv/bin/pip install -U pip
+
+ADD test.sh zeroc_ice-3.6.5-cp39-cp39-manylinux2014_x86_64.whl /
+RUN /test.sh
